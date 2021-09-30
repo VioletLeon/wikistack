@@ -12,7 +12,7 @@ router.post('/', async (req, res, next) => {
   try{
     const page = await Page.create({
       title: req.body.title,
-      slug: 'placeholder',
+      slug: createSlug(req.body.title),
       content: req.body.pagecontent,
       status: req.body.pagestatus
     })
@@ -20,6 +20,10 @@ router.post('/', async (req, res, next) => {
     next(e)
   }
 });
+
+function createSlug(title) {
+  return title.replace(/\s+/g, '_').replace(/\W/g, '');
+}
 
 router.get('/add', (req, res, next) => {
   res.send(addPage());
