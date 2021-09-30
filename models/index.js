@@ -4,15 +4,15 @@ const db = new Sequelize('postgres://localhost:5432/wikistack');
 const Page = db.define('Page', {
   title: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   slug: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   content: {
     type: Sequelize.TEXT,
-    allowNull: false,
+    allowNull: true,
   },
   status: {
     type: Sequelize.ENUM('open', 'closed'),

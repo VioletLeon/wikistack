@@ -22,12 +22,12 @@ app.use('/wiki', wikiRouter);
 // app.use('/user', userRouter);
 
 app.get('/', (req, res) => {
-  res.send('Hello');
+  res.redirect('/wiki');
 });
 
 const init = async () => {
   await db.sync({ force: false });
-  const PORT = 8080;
+  const PORT = 3000;
   app.listen(PORT, () => {
     console.log(`App is listening to port ${PORT}`);
   });
